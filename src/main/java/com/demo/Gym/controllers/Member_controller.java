@@ -39,7 +39,7 @@ public class Member_controller {
         return ResponseEntity.ok(serv.findById(id));
     }
 
-    @PutMapping("/update")
+    @PutMapping("/updatemember")
     public ResponseEntity<Member> updateMember(@RequestBody Member member) {
         return ResponseEntity.ok(serv.updateMember(member));
     }
