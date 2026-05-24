@@ -18,7 +18,7 @@ import com.demo.Gym.models.Member;
 import com.demo.Gym.services.Member_service;
 
 @RestController
-@RequestMapping("api/member/")
+@RequestMapping("gym/member/")
 public class Member_controller {
 
     @Autowired

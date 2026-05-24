@@ -18,7 +18,7 @@ import com.demo.Gym.models.Plan;
 import com.demo.Gym.services.Plan_service;
 
 @RestController
-@RequestMapping("api/plan/")
+@RequestMapping("gym/plan/")
 public class Plan_controller {
 
     @Autowired
