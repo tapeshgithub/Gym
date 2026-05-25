@@ -1,5 +1,7 @@
 package com.demo.Gym.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -27,6 +29,7 @@ public class Member {
     private LocalDate joinDate;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference(value = "member-membership")
     private List<Membership> memberships = new ArrayList<>();
 
     public Member() {

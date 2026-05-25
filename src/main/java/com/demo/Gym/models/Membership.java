@@ -1,5 +1,7 @@
 package com.demo.Gym.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
@@ -14,10 +16,12 @@ public class Membership {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id", nullable = false)
+    @JsonBackReference(value = "member-membership")
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "plan_id", nullable = false)
+    @JsonBackReference(value = "plan-membership")
     private Plan plan;
 
     @Column(name = "start_date", nullable = false)
@@ -32,7 +36,10 @@ public class Membership {
     public Membership() {
     }
 
-    public Membership(Long membershipId, Member member, Plan plan, LocalDate startDate, LocalDate endDate, String paymentStatus) {
+    public Membership(Long membershipId, Member member, Plan plan,
+                      LocalDate startDate, LocalDate endDate,
+                      String paymentStatus) {
+
         this.membershipId = membershipId;
         this.member = member;
         this.plan = plan;

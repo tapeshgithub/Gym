@@ -1,5 +1,7 @@
 package com.demo.Gym.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -24,12 +26,15 @@ public class Plan {
     private BigDecimal price;
 
     @OneToMany(mappedBy = "plan", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference(value = "plan-membership")
     private List<Membership> memberships = new ArrayList<>();
 
     public Plan() {
     }
 
-    public Plan(Long planId, String planName, Integer durationMonths, BigDecimal price) {
+    public Plan(Long planId, String planName,
+                Integer durationMonths, BigDecimal price) {
+
         this.planId = planId;
         this.planName = planName;
         this.durationMonths = durationMonths;
