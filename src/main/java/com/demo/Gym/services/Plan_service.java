@@ -15,37 +15,33 @@ public class Plan_service {
     @Autowired
     Gym_plan_repo repo;
 
-    // Save a plan
     public void savePlan(Plan plan) {
         repo.save(plan);
     }
 
-    // Find plan by id
     public Optional<Plan> findById(Long id) {
         Plan plan = repo.findById(id)
                 .orElseThrow(() -> new RuntimeException("Plan not found!!!"));
         return Optional.of(plan);
     }
 
-    // Find all plans
     public List<Plan> findAllPlans() {
         return repo.findAll();
     }
 
-    // Delete plan
     public void deletePlan(Long id) {
         repo.deleteById(id);
     }
 
-    // Update plan
     public Plan updatePlan(Plan plan) {
-        Plan old_data = repo.getById(plan.getPlanId());
+        // Use findById instead of deprecated getById
+        Plan old_data = repo.findById(plan.getPlanId())
+                .orElseThrow(() -> new RuntimeException("Plan not found with id: " + plan.getPlanId()));
 
         old_data.setPlanName(plan.getPlanName());
         old_data.setDurationMonths(plan.getDurationMonths());
         old_data.setPrice(plan.getPrice());
 
-        repo.save(old_data);
-        return old_data;
+        return repo.save(old_data);
     }
 }
