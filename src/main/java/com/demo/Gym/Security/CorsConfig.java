@@ -36,7 +36,7 @@ public class CorsConfig {
         );
 
         config.setAllowedHeaders(
-                Arrays.asList("*")
+        		Arrays.asList("*")
         );
 
         config.setAllowCredentials(true);

@@ -40,20 +40,19 @@ public class SecurityConfig {
             .cors(cors -> {})
 
             .authorizeHttpRequests(auth -> auth
-
-                .requestMatchers(
-                        HttpMethod.OPTIONS,
-                        "/**"
-                ).permitAll()
-
-                .requestMatchers(
-                        "/gym/auth/register",
-                        "/gym/auth/login"
-                ).permitAll()
-
-                .anyRequest().authenticated()
-            )
-
+            	
+            		.requestMatchers(
+            	            HttpMethod.OPTIONS,
+            	            "/**"
+            	    ).permitAll()
+            	    
+            	    .requestMatchers(
+            	            "/gym/auth/register",
+            	            "/gym/auth/login"
+            	    ).permitAll()
+            	    
+            	    .anyRequest().authenticated()
+            	)
             .sessionManagement(session ->
                     session.sessionCreationPolicy(
                             SessionCreationPolicy.STATELESS
