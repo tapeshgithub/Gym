@@ -21,7 +21,7 @@ public class CorsConfig {
 
         config.setAllowedOrigins(
                 Arrays.asList(
-                        "http://localhost:3000"
+                        "https://gym-frontend-silk.vercel.app"
                 )
         );
 
